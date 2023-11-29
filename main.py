@@ -28,11 +28,11 @@ while True:
     if op == 2:
         # remove screen
         print("\nWhat all do you want to remove?")
-        n = 1
+        m = 1
         for items in  groceries.values():
             for item in items:
-                print(f"{n}.{item}")
-                n += 1
+                print(f"{m}.{item}")
+                m += 1
         
         input()
     if op == 3:
