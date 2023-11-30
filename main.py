@@ -29,13 +29,22 @@ while True:
         # remove screen
         print("\nWhat all do you want to remove?")
 
-        e = 1
-        for items in  groceries.values():
-            for item in items:
-                print(f"{n}.{item}")
+        n = 1
+        items = []
+        for key in  groceries:
+            for item in groceries[key]:
+                items.append((key, item))
+
+        for idx, item in enumerate(items):
+            print(f"{idx+1}.{item[1]}")
               
-        
-        input()
+        item_no = list(map(int, input().split()))
+        for idx, item in enumerate(items):
+            if idx+1 in item_no:
+                temp = groceries[item[0]]
+                temp.remove(item[1])
+                groceries[item[0]] = temp
+
     if op == 3:
         # view screen
         print(groceries)
