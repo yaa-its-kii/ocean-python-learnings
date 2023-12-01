@@ -27,13 +27,25 @@ while True:
 
     if op == 2:
         # remove screen
-        print("\nWhat all do you want to remove?")
-
-        n = 1
         items = []
         for key in  groceries:
             for item in groceries[key]:
                 items.append((key, item))
+        
+        if len(items) == 0:
+            print("\nThere are no items to remove")
+        else:
+            print("\nWhat all do you want to remove?")
+
+
+
+
+    
+
+
+        n = 1
+       
+        
 
         for idx, item in enumerate(items):
             print(f"{idx+1}.{item[1]}")
