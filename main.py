@@ -1,4 +1,4 @@
-groceries = {}
+groceries = {'diary_products': ['milk'], 'meat_products': [],'snacks':[],'grains':[]}
 cate = ["diary_products", "meat_products", "snacks", "grains"]
 
 
@@ -17,10 +17,10 @@ while True:
             + cate[add_op - 1].replace("_", " ").removesuffix("s")
             + " you want to add?\n"
         )
-        item = input("Enter your item:")
+        item =list(map(str,input("Enter your items:").split()))
         if cate[add_op - 1] in groceries:
             temp = groceries[cate[add_op - 1]]
-            temp.append(item)
+            temp.extend(item)
             groceries[cate[add_op - 1]] = temp
             del temp
         else:
@@ -47,6 +47,7 @@ while True:
                 temp = groceries[item[0]]
                 temp.remove(item[1])
                 groceries[item[0]] = temp
+            
 
     if op == 3:
         # view screen
