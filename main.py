@@ -22,6 +22,7 @@ while True:
             temp = groceries[cate[add_op - 1]]
             temp.extend(item)
             groceries[cate[add_op - 1]] = temp
+            del temp
         else:
             groceries[cate[add_op - 1]] = [item]
 
@@ -36,17 +37,7 @@ while True:
             print("\nThere are no items to remove")
         else:
             print("\nWhat all do you want to remove?")
-
-
-
-
-    
-
-
         n = 1
-       
-        
-
         for idx, item in enumerate(items):
             print(f"{idx+1}.{item[1]}")
               
