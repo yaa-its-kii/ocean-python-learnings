@@ -42,9 +42,10 @@ while True:
             print("\nThere are no items to remove")
         else:
             print("\nWhat all do you want to remove?")
-        n = 1
         for idx, item in enumerate(items):
             print(f"{idx+1}.{item[1]}")
+        if len(items) != 0:
+             print(idx+2,'.'+'remove all', sep="")
               
         item_no = list(map(int, input().split()))
         for idx, item in enumerate(items):
@@ -52,6 +53,8 @@ while True:
                 temp = groceries[item[0]]
                 temp.remove(item[1])
                 groceries[item[0]] = temp
+        if idx+2 == item_no[0]:
+            groceries.clear()
             
 
     if op == 3:
