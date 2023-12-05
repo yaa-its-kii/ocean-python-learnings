@@ -1,5 +1,4 @@
-groceries = { 'diary_products':[], 'meat_products':[], "snacks":[], "grains":[]}
-
+groceries = {'diary_products': ['milk'], 'meat_products': [],'snacks':[],'grains':[]}
 cate = ["diary_products", "meat_products", "snacks", "grains"]
 
 
@@ -18,23 +17,27 @@ while True:
             + cate[add_op - 1].replace("_", " ").removesuffix("s")
             + " you want to add?\n"
         )
-        item = list(map,str,input("Enter your items:").split())
+        item =list(map(str,input("Enter your items:").split()))
         if cate[add_op - 1] in groceries:
             temp = groceries[cate[add_op - 1]]
             temp.extend(item)
             groceries[cate[add_op - 1]] = temp
+            del temp
         else:
             groceries[cate[add_op - 1]] = [item]
 
     if op == 2:
-        # remove screen 
-        print("\nWhat all do you want to remove")
-        n = 1
-        items=[]
+        # remove screen
+        items = []
         for key in  groceries:
             for item in groceries[key]:
                 items.append((key, item))
-
+        
+        if len(items) == 0:
+            print("\nThere are no items to remove")
+        else:
+            print("\nWhat all do you want to remove?")
+        n = 1
         for idx, item in enumerate(items):
             print(f"{idx+1}.{item[1]}")
               
