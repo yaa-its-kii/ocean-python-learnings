@@ -1,4 +1,4 @@
-groceries = {'diary_products': ['milk'], 'meat_products': [],'snacks':[],'grains':[]}
+groceries = {}
 cate = ["diary_products", "meat_products", "snacks", "grains"]
 
 
@@ -11,20 +11,25 @@ while True:
         print("\nIn which of the below categories you want to add?")
         for i, k in enumerate(cate):
             print(str(i + 1) + "." + k)
+        print (str(i+2)+"."+"add_category")
         add_op = int(input("Choose an option:"))
-        print(
-            "What "
-            + cate[add_op - 1].replace("_", " ").removesuffix("s")
-            + " you want to add?\n"
-        )
-        item =list(map(str,input("Enter your items:").split()))
-        if cate[add_op - 1] in groceries:
-            temp = groceries[cate[add_op - 1]]
-            temp.extend(item)
-            groceries[cate[add_op - 1]] = temp
-            del temp
+        if add_op==(i+2):
+           new_cat= input("Enter the name of the category:")
+           cate.append(new_cat)
         else:
-            groceries[cate[add_op - 1]] = [item]
+            print(
+                "What "
+                + cate[add_op - 1].replace("_", " ").removesuffix("s")
+                + " you want to add?\n"
+            )
+            item =list(map(str,input("Enter your items:").split()))
+            if cate[add_op - 1] in groceries:
+                temp = groceries[cate[add_op - 1]]
+                temp.extend(item)
+                groceries[cate[add_op - 1]] = temp
+                del temp
+            else:
+                groceries[cate[add_op - 1]] = item
 
     if op == 2:
         # remove screen
