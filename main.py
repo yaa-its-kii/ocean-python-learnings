@@ -1,8 +1,8 @@
 groceries = {}
 cate = ["diary_products", "meat_products", "snacks", "grains"]
 
-
 while True:
+    file = open("groceries_list.txt", "w+")
     print("Menu:\n\n1.Add\n2.Remove\n3.View\n4.Exit")
 
     op = int(input("Choose an option:"))
@@ -30,14 +30,16 @@ while True:
                 del temp
             else:
                 groceries[cate[add_op - 1]] = item
-
+        print(str(groceries))
+        file.write(str(groceries))
+        
     if op == 2:
         # remove screen
         items = []
         for key in  groceries:
             for item in groceries[key]:
                 items.append((key, item))
-        
+
         if len(items) == 0:
             print("\nThere are no items to remove")
         else:
@@ -59,6 +61,8 @@ while True:
 
     if op == 3:
         # view screen
+
         print(groceries)
     if op == 4:
+        file.close()
         break
