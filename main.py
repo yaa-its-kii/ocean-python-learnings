@@ -1,35 +1,52 @@
+from prettytable import PrettyTable
+
+
+
 groceries = {}
-cate = ["diary_products", "meat_products", "snacks", "grains"]
+categories = ["diary_products", "meat_products", "snacks", "grains"]
 
 
 while True:
     print("Menu:\n\n1.Add\n2.Remove\n3.View\n4.Exit")
 
     op = int(input("Choose an option:"))
+
     if op == 1:
         # add screen
         print("\nIn which of the below categories you want to add?")
-        for i, k in enumerate(cate):
-            print(str(i + 1) + "." + k)
-        print (str(i+2)+"."+"add_category")
+        pretty_table = PrettyTable()
+        pretty_table.field_names = ["S.NO", "Categories"]
+        rows = []
+        for idx, category in enumerate(categories):
+            rows.append([idx+1,category])
+            
+        pretty_table.add_rows(rows)
+
+        # for i, k in enumerate(categories):
+        #     print(str(i + 1) + "." + k)
+        pretty_table.add_row([str(idx+2),"add_category"])
+        print(pretty_table)
+
         add_op = int(input("Choose an option:"))
-        if add_op==(i+2):
-           new_cat= input("Enter the name of the category:")
-           cate.append(new_cat)
+        if add_op == (idx+2):
+           new_cat = input("Enter the name of the category:")
+           categories.append(new_cat)
         else:
             print(
                 "What "
-                + cate[add_op - 1].replace("_", " ").removesuffix("s")
+                + categories[add_op - 1].replace("_", " ").removesuffix("s")
                 + " you want to add?\n"
             )
-            item =list(map(str,input("Enter your items:").split()))
-            if cate[add_op - 1] in groceries:
-                temp = groceries[cate[add_op - 1]]
+
+            item = list(map(str,input("Enter your items:").split()))
+            if categories[add_op - 1] in groceries:
+                temp = groceries[categories[add_op - 1]]
                 temp.extend(item)
-                groceries[cate[add_op - 1]] = temp
+                groceries[categories[add_op - 1]] = temp
                 del temp
             else:
-                groceries[cate[add_op - 1]] = item
+                groceries[categories[add_op - 1]] = item
+        
 
     if op == 2:
         # remove screen
@@ -60,5 +77,7 @@ while True:
     if op == 3:
         # view screen
         print(groceries)
+
+
     if op == 4:
         break
