@@ -1,14 +1,22 @@
-groceries = {}
-cate = ["diary_products", "meat_products", "snacks", "grains"]
+import colorama
+from colorama import Fore, Back, Style
+colorama.init()
+
+
+groceries = {'diary_products': ["Milk"], 'meat_products': ["Chicken"],'snacks': ["Lays"], 'grains':[]}
+cate = [Fore.WHITE+"diary_products", "meat_products", "snacks", "grains"]
 
 while True:
+    print(Fore.YELLOW+"Welcome to shopping list tracker")
+    print(Fore.YELLOW+"\nMenu:")
+    print(Fore.WHITE+"1.Add\n2.Remove\n3.View")
+    print(Fore.RED+"4.Exit")
     file = open("groceries_list.txt", "w+")
-    print("Menu:\n\n1.Add\n2.Remove\n3.View\n4.Exit")
 
-    op = int(input("Choose an option:"))
+    op = int(input(Fore.YELLOW+"Choose an option:"))
     if op == 1:
         # add screen
-        print("\nIn which of the below categories you want to add?")
+        print("\nIn which of the below categories you want to add?\n")
         for i, k in enumerate(cate):
             print(str(i + 1) + "." + k)
         print (str(i+2)+"."+"add_category")
@@ -61,8 +69,15 @@ while True:
 
     if op == 3:
         # view screen
+        print("\nYour added products")
+        n = 1
+        for key in groceries:
+            for item in groceries[key]:
+                print(n,item,sep=".")
+        print()        
 
-        print(groceries)
     if op == 4:
+        print("\nThank you for using shopping list tracker!")
+        print()
         file.close()
         break
