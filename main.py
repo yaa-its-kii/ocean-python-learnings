@@ -6,12 +6,12 @@ colorama.init()
 groceries = {'diary_products': ["Milk"], 'meat_products': ["Chicken"],'snacks': ["Lays"], 'grains':[]}
 cate = [Fore.WHITE+"diary_products", "meat_products", "snacks", "grains"]
 
-
 while True:
     print(Fore.YELLOW+"Welcome to shopping list tracker")
     print(Fore.YELLOW+"\nMenu:")
     print(Fore.WHITE+"1.Add\n2.Remove\n3.View")
     print(Fore.RED+"4.Exit")
+    file = open("groceries_list.txt", "w+")
 
     op = int(input(Fore.YELLOW+"Choose an option:"))
     if op == 1:
@@ -38,14 +38,16 @@ while True:
                 del temp
             else:
                 groceries[cate[add_op - 1]] = item
-
+        print(str(groceries))
+        file.write(str(groceries))
+        
     if op == 2:
         # remove screen
         items = []
         for key in  groceries:
             for item in groceries[key]:
                 items.append((key, item))
-        
+
         if len(items) == 0:
             print("\nThere are no items to remove")
         else:
@@ -73,7 +75,9 @@ while True:
             for item in groceries[key]:
                 print(n,item,sep=".")
         print()        
+
     if op == 4:
         print("\nThank you for using shopping list tracker!")
         print()
+        file.close()
         break
