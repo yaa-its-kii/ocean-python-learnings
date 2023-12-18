@@ -1,15 +1,22 @@
+import os.path
+import colorama
+import json
+
 from actions.remove import remove_screen
 from actions.view import view_screen
 from prettytable import PrettyTable
 from colorama import Fore, Back, Style
-import colorama
 from actions.add import add_items
 
 
 colorama.init()
 
 groceries = {}
-categories = [Fore.WHITE+"diary_products", "meat_products", "snacks", "grains"]
+if os.path.isfile("groceries.json"):
+    with open("groceries.json", "r") as file:
+        groceries = json.load(file)
+
+categories = ["diary_products", "meat_products", "snacks", "grains"]
 
 while True:
     print(Fore.YELLOW+"Welcome to shopping list tracker")
@@ -20,8 +27,8 @@ while True:
     op = int(input(Fore.YELLOW+"Choose an option:"))
 
     if op == 1:
-        #add screen
         add_items(groceries,categories)
+        
     if op == 2:
         remove_screen(groceries, categories)
 

@@ -1,8 +1,10 @@
+import json
+
 from prettytable import PrettyTable
 
 def add_items(groceries,categories):
 
-    file = open("groceries_list.txt", "w+")
+    #add screen
     rows = []
     pretty_table = PrettyTable()
 
@@ -39,6 +41,5 @@ def add_items(groceries,categories):
 
     print(str(groceries))
 
-    file.write(str(groceries))
-    file.close()
-
+    with open("groceries.json", "w") as file:
+        json.dump(groceries, file)

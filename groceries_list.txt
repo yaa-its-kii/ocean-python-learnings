@@ -1,1 +1,0 @@
-{'\x1b[37mdiary_products': ['milk'], 'meat_products': ['chicken']}
